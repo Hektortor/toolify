@@ -1,6 +1,3 @@
-
-<<<<<<< HEAD
-
 [![Build Status][build-shield]]()
 [![Contributors][contributors-shield]]()
 [![MIT License][license-shield]][license-url]
@@ -96,10 +93,8 @@ Project Link: [https://github.com/Hektortor/toolify](https://github.com/Hektorto
 [contributors-shield]: https://img.shields.io/badge/contributors-1-orange.svg?style=flat-square
 [license-shield]: https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square
 [license-url]: https://choosealicense.com/licenses/mit
-=======
-A collection of extra functionality for Spotify
 
-### MIT License
+## MIT License
 
 Copyright (c) 2019 Hektortor
 
@@ -120,4 +115,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
->>>>>>> de18ec9097ec2cf1ba9faf793fb91274c57b4f1b
