@@ -20,6 +20,7 @@ class Statistics extends Component {
             currentUser: {},
             loading: false,
             created: false,
+            error: false,
             rangeSelection: 1
         };
         if (params.access_token) {
@@ -37,31 +38,18 @@ class Statistics extends Component {
         return hashParams;
     }
 
-    getProfile() {
-
-        var context = this;
-
-        spotifyWebApi.getMe().then((userInfo) => {
-
-            context.setState({
-                currentUser: userInfo
-            });
-
-        });
-    }
-
     getTops() {
 
         this.setState({
             loading: true,
             created: false,
+            error: false,
             topTracks: [],
             topArtists: []
         });
 
         var context = this;
         var range = this.state.rangeSelection;
-
         var options = {};
 
         switch (range) {
@@ -74,55 +62,68 @@ class Statistics extends Component {
             case 3:
                 options = { limit: 10, time_range: "short_term" };
                 break;
-
             default:
                 options = { limit: 10, time_range: "medium_term" };
                 break;
         }
 
-        spotifyWebApi.getMyTopArtists(options).then((artists) => {
+        spotifyWebApi.getMyTopArtists(options)
+            .then((artists) => {
 
-            artists.items.forEach(element => {
-                if ((typeof (element.images) !== 'undefined') && (element.images !== null)) {
-                    if (element.images.length === 0) {
-                        element.hasImage = false;
-                    } else {
-                        element.hasImage = true;
-                    }
-                } else {
-                    element.hasImage = false;
-                }
-            });
-
-            context.setState({
-                topArtists: artists.items
-            });
-
-            console.log(artists.items.length + " Top Artists loaded!");
-
-            spotifyWebApi.getMyTopTracks(options).then((tracks) => {
-
-                tracks.items.forEach(element => {
-                    if ((typeof (element.album.images) !== 'undefined') && (element.album.images !== null)) {
-                        if (element.album.images.length === 0) {
-                            element.hasImage = false;
+                artists.items.forEach(artist => {
+                    if ((typeof (artist.images) !== 'undefined') && (artist.images !== null)) {
+                        if (artist.images.length === 0) {
+                            artist.hasImage = false;
                         } else {
-                            element.hasImage = true;
+                            artist.hasImage = true;
                         }
                     } else {
-                        element.hasImage = false;
+                        artist.hasImage = false;
                     }
                 });
 
                 context.setState({
-                    topTracks: tracks.items,
-                    loading: false,
-                    created: true
+                    topArtists: artists.items
                 });
 
-                console.log(tracks.items.length + " Top Tracks loaded!");
+                spotifyWebApi.getMyTopTracks(options)
+                    .then((tracks) => {
+
+                        tracks.items.forEach(track => {
+                            if ((typeof (track.album.images) !== 'undefined') && (track.album.images !== null)) {
+                                if (track.album.images.length === 0) {
+                                    track.hasImage = false;
+                                } else {
+                                    track.hasImage = true;
+                                }
+                            } else {
+                                track.hasImage = false;
+                            }
+                        });
+
+                        context.setState({
+                            topTracks: tracks.items,
+                            loading: false,
+                            created: true
+                        });
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                        context.setState({
+                            created: false,
+                            loading: false,
+                            error: true
+                        });
+                    });
+            })
+            .catch((err) => {
+                console.log(err);
+                context.setState({
+                    created: false,
+                    loading: false,
+                    error: true
+                });
             });
-        });
 
     }
 
@@ -150,14 +151,21 @@ class Statistics extends Component {
     render() {
         var loading = this.state.loading;
         var range = this.state.rangeSelection;
+        var error = this.state.error;
         var created = this.state.created;
         return (
-            <div className="Statistics" style={{ background: 'black' }}>
+            <div className="App">
 
-                <h1 style={{ fontFamily: 'Gotham Bold', color: 'white', marginTop: '0px' }}>Get your Personal Top Tracks and Artists</h1>
-                {!loading ? <div></div> : <Spinner animation="grow" variant="success" />}
+                <h1 style={{ fontFamily: 'Gotham Bold' }}>Get your Personal Top Tracks and Artists</h1>
+                {
+                    !loading
+                        ?
+                        <div></div>
+                        :
+                        <Spinner animation="grow" variant="success" />
+                }
 
-                <div className="formLayout" style={{ margin: '0px', paddingTop: '20px', paddingBottom: '20px' }}>
+                <div className="formLayout">
 
                     <ToggleButtonGroup variant="success" type="radio" name="rangeSelection" defaultValue={1} style={{ margin: '8px', padding: '0px', background: 'rgb(15, 185, 88)', borderRadius: '30px', textTransform: 'uppercase', fontWeight: '600', fontSize: '14px', cursor: 'pointer', textAlign: 'center' }}>
 
@@ -182,12 +190,12 @@ class Statistics extends Component {
 
                     </ToggleButtonGroup>
 
-                    <Button variant="success" style={{ width: '260px', background: 'rgb(15, 185, 88)', borderRadius: '30px', textTransform: 'uppercase', fontWeight: '600', paddingRight: '30px', paddingLeft: '30px', fontSize: '14px' }} onClick={() => this.getTops()}>Check Statistics</Button>
+                    <Button variant="success" className="button" onClick={() => this.getTops()}>Check Statistics</Button>
 
                     {
                         created
                             ?
-                            <h2 style={{ fontFamily: 'Gotham Bold', color: 'white', marginTop: '30px' }}>Top 10 Artists</h2>
+                            <h2 style={{ fontFamily: 'Gotham Bold', marginTop: '30px' }}>Top 10 Artists</h2>
                             :
                             <div></div>
                     }
@@ -229,12 +237,12 @@ class Statistics extends Component {
                     {
                         created
                             ?
-                            <h2 style={{ fontFamily: 'Gotham Bold', color: 'white', marginTop: '20px' }}>Top 10 Tracks</h2>
+                            <h2 style={{ fontFamily: 'Gotham Bold', marginTop: '20px' }}>Top 10 Tracks</h2>
                             :
                             <div></div>
                     }
 
-                    <ListGroup style={{ background: 'black', textAlign: 'center', margin: '10px' }}>
+                    <ListGroup style={{ margin: '10px' }}>
                         {
                             this.state.topTracks.map(track => {
                                 return (
@@ -270,9 +278,7 @@ class Statistics extends Component {
                             })
                         }
                     </ListGroup>
-
                 </div>
-
             </div>
         );
     }

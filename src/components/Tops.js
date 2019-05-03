@@ -147,7 +147,7 @@ class Tops extends Component {
                     .then((playlist) => {
 
                         spotifyWebApi.addTracksToPlaylist(playlist.id, topTracks)
-                            .then((response) => {
+                            .then(() => {
 
                                 spotifyWebApi.getPlaylist(playlist.id)
                                     .then((playlist) => {
@@ -250,23 +250,23 @@ class Tops extends Component {
                             :
                             <div></div>
                     }
-
-                    {created ?
-                        <a href={this.state.currentPlaylist.uri} target="_blank" rel="noopener noreferrer">
-                            <div className="card" style={{ background: 'rgb(24, 24, 24)', borderColor: '#464646', borderWidth: '2px' }}>
-                                <div>
-                                    <div style={{ float: 'left', borderRadius: '4px' }}>
-                                        <img src={this.state.currentPlaylist.image} style={{ borderRadius: '26px', borderColor: '#464646', borderWidth: '7px', width: '64px', height: '64px' }} alt="cover" />
-                                    </div>
-                                    <div style={{ float: 'left', paddingLeft: '6px', paddingRight: '10px', paddingTop: '8px', paddingBottom: '8px' }} >
-                                        <div style={{ fontSize: '14px', fontWeight: '500', color: 'white' }}>{this.state.currentPlaylist.name}</div>
-                                        <div style={{ fontSize: '12px', fontWeight: '500', color: 'white' }}>50 Tracks</div>
+                    {
+                        created ?
+                            <a href={this.state.currentPlaylist.uri} target="_blank" rel="noopener noreferrer">
+                                <div className="card" style={{ background: 'rgb(24, 24, 24)', borderColor: '#464646', borderWidth: '2px' }}>
+                                    <div>
+                                        <div style={{ float: 'left', borderRadius: '4px' }}>
+                                            <img src={this.state.currentPlaylist.image} style={{ borderRadius: '26px', borderColor: '#464646', borderWidth: '7px', width: '64px', height: '64px' }} alt="cover" />
+                                        </div>
+                                        <div style={{ float: 'left', paddingLeft: '6px', paddingRight: '10px', paddingTop: '8px', paddingBottom: '8px' }} >
+                                            <div style={{ fontSize: '14px', fontWeight: '500', color: 'white' }}>{this.state.currentPlaylist.name}</div>
+                                            <div style={{ fontSize: '12px', fontWeight: '500', color: 'white' }}>50 Tracks</div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </a>
-                        :
-                        <div></div>
+                            </a>
+                            :
+                            <div></div>
                     }
                 </div>
             </div>

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import '../App.css';
-import './Releases.css';
 import check from '../img/check.png';
 import Spotify from 'spotify-web-api-js';
 import Button from 'react-bootstrap/Button';
@@ -384,12 +383,12 @@ class Releases extends Component {
         var loading = this.state.loading;
         var type = this.state.typeSelection;
         return (
-            <div style={{ background: 'black', textAlign: 'center' }}>
+            <div className="App">
 
-                <h1 style={{ fontFamily: 'Gotham Bold', color: 'white', marginTop: '0px' }}>New Releases of your Followed Artists</h1>
+                <h1 style={{ fontFamily: 'Gotham Bold' }}>New Releases of your Followed Artists</h1>
                 {!loading ? <div></div> : <Spinner animation="grow" variant="success" />}
 
-                <div className="formLayout" style={{ margin: '0px', paddingTop: '20px', paddingBottom: '20px', textAlign: 'center' }}>
+                <div className="formLayout">
 
                     <ToggleButtonGroup variant="success" type="radio" name="typeSelection" defaultValue={1} style={{ margin: '8px', padding: '0px', background: 'rgb(15, 185, 88)', borderRadius: '30px', textTransform: 'uppercase', fontWeight: '600', fontSize: '14px', cursor: 'pointer', textAlign: 'center' }}>
 
@@ -414,91 +413,9 @@ class Releases extends Component {
 
                     </ToggleButtonGroup>
 
-                    <Button variant="success" style={{ width: '260px', background: 'rgb(15, 185, 88)', borderRadius: '30px', textTransform: 'uppercase', fontWeight: '600', paddingRight: '30px', paddingLeft: '30px', fontSize: '14px' }} onClick={() => this.getNewFollowedArtists()}>Check followed artists</Button>
+                    <Button className="button" variant="success" onClick={() => this.getNewFollowedArtists()}>Check followed artists</Button>
 
                 </div>
-
-
-                {/* <a href='www.google.de' target="_blank" rel="noopener noreferrer">
-                    <div className="cardRelease" style={{ background: 'rgb(24, 24, 24)', borderColor: '#464646', borderWidth: '2px' }}>
-                        <div className="box1" style={{ float: 'left', padding: '0px', borderStyle: 'solid', borderWidth: '1px' }}>
-
-                            <img src='https://www.rap-n-blues.com/wp-content/uploads/2013/09/drake-nothing-was-the-same-cover.jpg' style={{ marginRight: '4px', float: 'left', borderRadius: '26px', borderColor: '#464646', borderWidth: '7px', width: '64px', height: '64px' }} alt="cover" />
-
-                            <div style={{ padding: '10px' }}>
-                                <div style={{ fontSize: '14px', fontWeight: '500', color: 'white', margin: 'auto' }}>Songname</div>
-                                <div style={{ fontSize: '12px', fontWeight: '400', color: 'grey', margin: 'auto' }}>Interpret</div>
-                            </div>
-
-                        </div>
-
-                        <div className="box2" style={{ padding: '0px', borderStyle: 'solid', borderWidth: '1px' }}>
-
-                            <div style={{}}>
-                                <div style={{ fontSize: '14px', fontWeight: '500', color: 'white', margin: 'auto' }}>12 · 04 · 19</div>
-                                <div style={{ fontSize: '12px', fontWeight: '400', color: 'grey', margin: 'auto' }}>single</div>
-                            </div>
-
-                            <img style={{ width: 30, height: 30, cursor: 'pointer' }} src={check} ref={this.attachRef} onClick={() => this.addAlbumToLibrary("", "")} />
-
-                            <Overlay target={target} show={show} placement="right">
-                                {({ placement, scheduleUpdate, arrowProps, ...props }) => (
-                                    <div style={{ backgroundColor: 'rgba(255, 100, 100, 0.85)', padding: '2px 10px', color: 'white', borderRadius: 3 }}>Simple tooltip</div>
-                                )}
-                            </Overlay>
-
-                        </div>
-                    </div>
-                </a> */}
-
-                {/* <div className="cardRelease" style={{ background: 'rgb(24, 24, 24)' }}>
-
-                    <div id="oben" style={{ height: '64px', clear: 'both' }}>
-                        <div id="obenRechts" style={{ float: 'right' }}>
-                            <img style={{ width: 30, height: 30, marginTop: '17px', marginBottom: '17px', cursor: 'pointer' }} src={check} ref={this.attachRef} onClick={() => this.addAlbumToLibrary("", "")} />
-                        </div>
-                        <div id="obenLinks" style={{ float: 'left', height: '64px' }}>
-                            <img src='https://www.rap-n-blues.com/wp-content/uploads/2013/09/drake-nothing-was-the-same-cover.jpg' style={{ marginRight: '4px', float: 'left', borderRadius: '26px', borderColor: '#464646', borderWidth: '7px', width: '64px', height: '64px' }} alt="cover" />
-                            <div style={{ float: 'left', marginTop: '10px', marginBottom: '10px', marginLeft: '4px' }}>
-                                <div style={{ fontSize: '14px', fontWeight: '500', color: 'white' }}>Songname</div>
-                                <div style={{ fontSize: '12px', fontWeight: '400', color: 'grey' }}>Interpret</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id="unten" style={{ clear: 'both', marginTop: '8px', color: 'grey' }}>
-                        <div style={{ marginLeft: '6px', fontSize: '14px', fontWeight: '500', float: 'left', wordWrap: 'break-word' }}>12 · 04 · 19</div>
-                        <div style={{ marginRight: '6px', fontSize: '12px', fontWeight: '400', float: 'right', wordWrap: 'break-word' }}>single</div>
-                    </div>
-                </div> */}
-
-                {/* <div className="cardRelease" style={{ background: 'rgb(24, 24, 24)' }}>
-
-                    <div id="oben" style={{ height: '64px', clear: 'both' }}>
-
-                        <div id="obenRechts" style={{ float: 'right' }}>
-                            <img style={{ width: 30, height: 30, marginTop: '17px', marginBottom: '17px', cursor: 'pointer' }} src={check} onClick={() => this.addAlbumToLibrary("item.id", "item.name")} />
-
-                        </div>
-
-                        <div id="obenLinks" style={{ float: 'left', height: '64px' }}>
-                            <a href="item.url" target="_blank" rel="noopener noreferrer">
-                                <img src='https://www.rap-n-blues.com/wp-content/uploads/2013/09/drake-nothing-was-the-same-cover.jpg' style={{ marginRight: '4px', float: 'left', borderRadius: '26px', borderColor: '#464646', borderWidth: '7px', width: '64px', height: '64px' }} alt="cover" />
-                            </a>
-                        <div style={{ float: 'left', marginTop: '10px', marginBottom: '10px', marginLeft: '4px', overflow: 'auto' }}>
-                            <div style={{ fontSize: '14px', fontWeight: '500', color: 'white', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', borderStyle: 'solid', borderWidth: '1px' }}>item.name</div>
-                            <div style={{ fontSize: '12px', fontWeight: '400', color: 'grey', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', borderStyle: 'solid', borderWidth: '1px' }}>item.interpret</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="unten" style={{ clear: 'both', marginTop: '8px', color: 'grey' }}>
-                    <div style={{ marginLeft: '6px', fontSize: '14px', fontWeight: '500', float: 'left', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>this.formatDate(item.date)</div>
-                    <div style={{ marginRight: '6px', fontSize: '12px', fontWeight: '400', float: 'right', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>item.type</div>
-                </div>
-            </div> */}
-
-
 
                 <ListGroup style={{ background: 'black', textAlign: 'center' }}>
                     {
@@ -528,88 +445,6 @@ class Releases extends Component {
                                         <div style={{ marginRight: '6px', fontSize: '12px', fontWeight: '400', float: 'right', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{item.type}</div>
                                     </div>
                                 </div>
-
-                                // <div className="cardRelease" style={{ background: 'rgb(24, 24, 24)', borderColor: '#464646', borderWidth: '2px' }}>
-                                //     <div className="box1" style={{ float: 'left', padding: '0px' }}>
-
-                                //         <a href={item.url} target="_blank" rel="noopener noreferrer">
-                                //             <img src={item.imageSmall} style={{ marginRight: '4px', float: 'left', borderRadius: '26px', borderColor: '#464646', borderWidth: '7px', width: '64px', height: '64px', cursor: 'pointer' }} alt="cover" />
-                                //         </a>
-
-                                //         <div style={{ padding: '10px' }}>
-                                //             <div style={{ fontSize: '14px', fontWeight: '500', color: 'white', margin: 'auto' }}>{item.name}</div>
-                                //             <div style={{ fontSize: '12px', fontWeight: '400', color: 'grey', margin: 'auto' }}>{item.interpret}</div>
-                                //         </div>
-
-                                //     </div>
-
-                                //     <div className="box2" style={{ padding: '0px' }}>
-
-                                //         <div style={{}}>
-                                //             <div style={{ fontSize: '14px', fontWeight: '500', color: 'white', margin: 'auto' }}>{this.formatDate(item.date)}</div>
-                                //             <div style={{ fontSize: '12px', fontWeight: '400', color: 'grey', margin: 'auto' }}>{item.type}</div>
-                                //         </div>
-
-                                //         <img style={{ width: 30, height: 30, cursor: 'pointer' }} src={check} ref={this.attachRef} onClick={() => this.addAlbumToLibrary(item.id, item.name)} />
-
-                                //     </div>
-                                // </div>
-
-                                // <a href={item.url} target="_blank" rel="noopener noreferrer">
-                                //     <div className="cardRelease" style={{ background: 'rgb(24, 24, 24)', borderColor: '#464646', borderWidth: '2px' }}>
-                                //         <div className="box1">
-                                //             <div style={{ float: 'left', borderRadius: '4px' }}>
-                                //                 <img src={item.imageSmall} style={{ borderRadius: '26px', borderColor: '#464646', borderWidth: '7px', width: '64px', height: '64px' }} alt="cover" />
-
-                                //                 <div style={{ float: 'left', padding: '10px' }} >
-                                //                     <div style={{ fontSize: '14px', fontWeight: '500', color: 'white', margin: 'auto' }}>{item.name}</div>
-                                //                     <div style={{ fontSize: '12px', fontWeight: '400', color: 'grey', margin: 'auto' }}>{item.interpret}</div>
-                                //                 </div>
-                                //             </div>
-                                //         </div>
-
-                                //         <div className="box2">
-                                //             <div style={{ padding: '10px', margin: 'auto' }} >
-                                //                 <span className="cardDiv" style={{ margin: '8px' }}>{this.formatDate(item.date)}</span>
-                                //                 <div className="cardDiv" style={{ backgroundColor: 'white', borderRadius: '4px', margin: '8px' }}>
-                                //                     <div className="badge">{item.type}</div>
-                                //                 </div>
-                                //                 <img className="cardDiv" style={{ filter: 'invert(1)', width: 30, height: 30, cursor: 'pointer', margin: '8px' }} src={this.check} onClick={() => this.addAlbumToLibrary(item.releaseAlbumId, item.name)} />
-                                //             </div>
-                                //         </div>
-                                //     </div>
-                                // </a>
-                                // <Card className="card2" style={{ background: 'rgb(24, 24, 24)', borderRadius: '12px', borderColor: '#464646', borderWidth: '2px', margin: '5px' }}>
-                                //     <Card.Body className="trackCard" style={{ borderRadius: '10px' }}>
-                                //         <div className="box1">
-                                //             <div className="cardDiv" style={{ borderRadius: '4px' }}>
-                                //                 <a href={item.url} target="_blank" rel="noopener noreferrer"><img src={item.imageSmall} style={{ borderRadius: '8px', borderColor: '#464646', borderWidth: '7px', width: '64px', height: '64px' }} alt="cover" /></a>
-                                //             </div>
-                                //             <div className="cardDiv" style={{ padding: '10px' }} >
-                                //                 <div style={{ fontSize: '14px', fontWeight: '500', color: 'white', margin: 'auto' }}>{item.name}</div>
-                                //                 <div style={{ fontSize: '12px', fontWeight: '400', color: 'grey', margin: 'auto' }}>{item.interpret}</div>
-                                //             </div>
-                                //         </div>
-                                // <div className="box2">
-                                //     <div style={{ padding: '10px', margin: 'auto' }} >
-                                //         <span className="cardDiv" style={{ margin: '8px' }}>{this.formatDate(item.date)}</span>
-                                //         <div className="cardDiv" style={{ backgroundColor: 'white', borderRadius: '4px', margin: '8px' }}>
-                                //             <div className="badge">{item.type}</div>
-                                //         </div>
-                                //         {
-                                //             /* {
-                                //             item.isSaved
-                                //                 ?
-                                //                 <img className="cardDiv" style={{ filter: 'invert(1)', width: 30, height: 30, cursor: 'pointer', margin: '8px' }} src="http://iconshow.me/media/images/ui/slim-square-icons/png/512/add.png" onClick={() => this.addAlbumToLibrary(item.releaseAlbumId, item.name, item.type)} />
-                                //                 :
-                                //                 <img className="cardDiv" style={{ filter: 'invert(1)', width: 30, height: 30, cursor: 'pointer', margin: '8px' }} src="https://cdn1.iconfinder.com/data/icons/material-core/20/check-circle-outline-512.png" onClick={() => this.removeAlbumToLibrary(item.releaseAlbumId, item.name, item.type)} />
-                                //         } */
-                                //         }
-                                //         <img className="cardDiv" style={{ filter: 'invert(1)', width: 30, height: 30, cursor: 'pointer', margin: '8px' }} src="./img/check.png" onClick={() => this.addAlbumToLibrary(item.releaseAlbumId, item.name)} />
-                                //     </div>
-                                // </div>
-                                //     </Card.Body>
-                                // </Card>
                             )
                         })
                     }
@@ -618,5 +453,4 @@ class Releases extends Component {
         );
     }
 }
-
 export default withRouter(Releases);
