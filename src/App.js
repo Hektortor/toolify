@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import history from "./history";
+// import history from "./history";
 import Spotify from 'spotify-web-api-js';
 import Button from 'react-bootstrap/Button';
 import Navbar from 'react-bootstrap/Navbar';
@@ -18,6 +18,7 @@ export var authEndpoint = 'https://accounts.spotify.com/authorize';
 
 var clientId = "8df5f41dfa6d43e0b6f2bf7be259268d";
 var redirectUri = "http%3A%2F%2Flocalhost%3A3000%2F";
+// var redirectUri = "https%3A%2F%2Fhektortor.github.io%2Fspotify-tools%2F";
 var scopes = [
   "user-read-private",
   "user-read-email",
@@ -37,14 +38,10 @@ class App extends Component {
     const params = this.getHashParams();
     this.state = {
       loggedIn: params.access_token ? true : false,
-      currentUser: {},
-      token: null
+      currentUser: {}
     };
     if (params.access_token) {
       spotifyWebApi.setAccessToken(params.access_token);
-      this.setState({
-        loggedIn: true
-      });
     }
   }
 
@@ -60,24 +57,27 @@ class App extends Component {
 
   getUserProfile() {
 
-    spotifyWebApi.getMe().then((response) => {
+    spotifyWebApi.getMe()
+      .then((response) => {
 
-      console.log(JSON.stringify(response));
-
-      var newCurrentUser = {
-        id: response.id,
-        name: response.display_name,
-        country: response.country,
-        email: response.email,
-        spotifyUrl: response.external_urls.spotify,
-        totalFollowers: response.followers.total,
-        imageUrl: response.images.length !== 0 ? response.images[0].url : "https://www.flynz.co.nz/wp-content/uploads/profile-placeholder.png",
-        product: response.product
-      };
-      this.setState({
-        currentUser: newCurrentUser
+        var newCurrentUser = {
+          id: response.id,
+          name: response.display_name,
+          country: response.country,
+          email: response.email,
+          spotifyUrl: response.external_urls.spotify,
+          totalFollowers: response.followers.total,
+          imageUrl: response.images.length !== 0 ? response.images[0].url : "https://www.flynz.co.nz/wp-content/uploads/profile-placeholder.png",
+          product: response.product
+        };
+        this.setState({
+          currentUser: newCurrentUser,
+          loggedIn: true
+        });
+      })
+      .catch((err) => {
+        console.log("Error:" + err);
       });
-    });
   }
 
   logout() {
@@ -99,9 +99,13 @@ class App extends Component {
     //   });
     //   spotifyWebApi.setAccessToken(_token);
     // }
-    this.getUserProfile();
 
-    const { match, location, history } = this.props;
+    if (spotifyWebApi.getAccessToken()) {
+      this.getUserProfile();
+    }
+
+    // const { match, location, history } = this.props;
+    const { location } = this.props;
 
     if (location !== undefined) {
 
@@ -180,7 +184,6 @@ class App extends Component {
 
             {
               loggedIn ?
-
                 <Switch>
                   <Route exact path="/" component={Home} />
                   <Route path="/releases" component={Releases} />
