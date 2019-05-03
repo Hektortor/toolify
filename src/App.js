@@ -118,7 +118,7 @@ class App extends Component {
   render() {
     var loggedIn = this.state.loggedIn;
     return (
-      <BrowserRouter>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         <div className="App" style={{ background: 'black', textAlign: 'center' }}>
           <Navbar collapseOnSelect expand="lg" variant="dark" sticky="top" style={{ backgroundColor: 'black', background: 'black', textAlign: 'center' }}>
             <NavLink to="/"><Navbar.Brand style={{ fontFamily: "Gotham Bold" }}>Spotify Tools</Navbar.Brand></NavLink>
