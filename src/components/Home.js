@@ -13,7 +13,7 @@ class Home extends Component {
         <NavLink to="/releases">
           <div className="card" style={{ background: 'linear-gradient(-45deg, #52a7ea, #712e98)', boxShadow: '0px 7px 50px 0px rgba(82,167,234,0.5)' }}>
             <h1>Releases</h1>
-            <h4>Get all the new releases of your followed artists just in a glance</h4>
+            <h4>Get all the new releases of your followed artists in a glance</h4>
           </div>
         </NavLink>
 

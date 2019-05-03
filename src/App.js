@@ -10,9 +10,9 @@ import { BrowserRouter, NavLink, Route, Switch } from 'react-router-dom';
 import Home from "./components//Home";
 import Releases from "./components/Releases";
 import Feelings from "./components/Feelings";
-import Tops from "./components//Tops";
-import Statistics from "./components//Statistics";
-import NotFound from "./components//NotFound";
+import Tops from "./components/Tops";
+import Statistics from "./components/Statistics";
+import NotFound from "./components/NotFound";
 
 export var authEndpoint = 'https://accounts.spotify.com/authorize';
 
@@ -28,20 +28,6 @@ var scopes = [
   "user-top-read",
   "playlist-modify-private"
 ];
-
-// // Get the hash of the url
-// const hash = window.location.hash
-//   .substring(1)
-//   .split("&")
-//   .reduce(function (initial, item) {
-//     if (item) {
-//       var parts = item.split("=");
-//       initial[parts[0]] = decodeURIComponent(parts[1]);
-//     }
-//     return initial;
-//   }, {});
-// window.location.hash = "";
-
 
 const spotifyWebApi = new Spotify();
 

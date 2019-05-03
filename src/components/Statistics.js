@@ -110,7 +110,7 @@ class Statistics extends Component {
         return (
             <div className="Statistics" style={{ background: 'black' }}>
 
-                <h1 style={{ fontFamily: 'Gotham Bold', color: 'white', marginTop: '0px' }}>Get your personal statistics</h1>
+                <h1 style={{ fontFamily: 'Gotham Bold', color: 'white', marginTop: '0px' }}>Get your Personal Statistics</h1>
                 {!loading ? <div></div> : <Spinner animation="grow" variant="success" />}
 
                 <div className="formLayout" style={{ margin: '0px', paddingTop: '20px', paddingBottom: '20px' }}>

@@ -462,7 +462,7 @@ class Feelings extends Component {
                     <Form>
                         <Form.Group controlId="form.name">
                             <Form.Label>Playlist Name</Form.Label>
-                            <Form.Control type="text" placeholder="Pure Love" onChange={(event) => this.handleNameChange(event)} />
+                            <Form.Control type="text" placeholder="e. g. Pure Love" onChange={(event) => this.handleNameChange(event)} />
                         </Form.Group>
                         <Form.Group controlId="form.feeling">
                             <Form.Label>Select feeling...</Form.Label>
@@ -484,7 +484,12 @@ class Feelings extends Component {
                                 <option>128</option>
                             </Form.Control>
                         </Form.Group>
-                        <Button variant="success" style={{ margin: '12px', background: 'rgb(15, 185, 88)', borderRadius: '30px', textTransform: 'uppercase', fontWeight: '600', paddingRight: '30px', paddingLeft: '30px', fontSize: '14px' }} onClick={() => this.createFeelingPlaylist()}>Create playlist</Button>
+                        <Button variant="success" style={{ margin: '12px', background: 'rgb(15, 185, 88)', borderRadius: '30px', textTransform: 'uppercase', fontWeight: '600', paddingRight: '30px', paddingLeft: '30px', fontSize: '14px' }}
+                            //  onClick={() => this.createFeelingPlaylist()}
+                            disabled>
+                            {/* Create playlist */}
+                            Coming Soon
+                         </Button>
                     </Form>
                     {!loading ? <div></div> : <Spinner animation="grow" variant="success" />}
 

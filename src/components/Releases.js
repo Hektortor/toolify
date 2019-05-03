@@ -386,10 +386,10 @@ class Releases extends Component {
         return (
             <div style={{ background: 'black', textAlign: 'center' }}>
 
-                <h1 style={{ fontFamily: 'Gotham Bold', color: 'white', marginTop: '0px' }}>New Releases of your followed artists</h1>
+                <h1 style={{ fontFamily: 'Gotham Bold', color: 'white', marginTop: '0px' }}>New Releases of your Followed Artists</h1>
                 {!loading ? <div></div> : <Spinner animation="grow" variant="success" />}
 
-                <div className="formLayout" style={{ margin: '0px', paddingTop: '20px', paddingBottom: '20px' }}>
+                <div className="formLayout" style={{ margin: '0px', paddingTop: '20px', paddingBottom: '20px', textAlign: 'center' }}>
 
                     <ToggleButtonGroup variant="success" type="radio" name="typeSelection" defaultValue={1} style={{ margin: '8px', padding: '0px', background: 'rgb(15, 185, 88)', borderRadius: '30px', textTransform: 'uppercase', fontWeight: '600', fontSize: '14px', cursor: 'pointer', textAlign: 'center' }}>
 
@@ -504,24 +504,21 @@ class Releases extends Component {
                     {
                         this.state.releases.map(item => {
                             return (
-
-
-                                <div className="cardRelease" style={{ background: 'rgb(24, 24, 24)' }}>
+                                <div className="cardRelease" style={{ background: 'rgb(24, 24, 24)', textAlign: 'center' }}>
 
                                     <div id="oben" style={{ height: '64px', clear: 'both' }}>
 
                                         <div id="obenRechts" style={{ float: 'right' }}>
                                             <img style={{ width: 30, height: 30, marginTop: '17px', marginBottom: '17px', cursor: 'pointer' }} alt="cover" src={check} onClick={() => this.addAlbumToLibrary(item.id, item.name)} />
-
                                         </div>
 
                                         <div id="obenLinks" style={{ float: 'left', height: '64px' }}>
                                             <a href={item.url} target="_blank" rel="noopener noreferrer">
                                                 <img src={item.imageSmall} style={{ marginRight: '4px', float: 'left', borderRadius: '26px', borderColor: '#464646', borderWidth: '7px', width: '64px', height: '64px' }} alt="cover" />
                                             </a>
-                                            <div style={{ float: 'left', marginTop: '10px', marginBottom: '10px', marginLeft: '4px' }}>
-                                                <div style={{ fontSize: '14px', fontWeight: '500', color: 'white', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', borderStyle: 'solid', borderWidth: '1px' }}>{item.name}</div>
-                                                <div style={{ fontSize: '12px', fontWeight: '400', color: 'grey', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', borderStyle: 'solid', borderWidth: '1px' }}>{item.interpret}</div>
+                                            <div style={{ float: 'left', marginTop: '10px', marginBottom: '10px', marginLeft: '4px', textAlign: 'left' }}>
+                                                <div style={{ fontSize: '14px', fontWeight: '500', color: 'white', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{item.name}</div>
+                                                <div style={{ fontSize: '12px', fontWeight: '400', color: 'grey', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{item.interpret}</div>
                                             </div>
                                         </div>
                                     </div>

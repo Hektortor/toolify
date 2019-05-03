@@ -6,7 +6,7 @@
     min-width: 300px;
     color: white;
     background: #fff;
-    /* font-family: 'Gotham Bold'; */
+    font-family: 'Gotham Bold';
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 32px;
     display: inline-block;
