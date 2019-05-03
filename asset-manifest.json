@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/spotify-tools/static/css/main.f84b1cd2.chunk.css",
-    "main.js": "/spotify-tools/static/js/main.84950535.chunk.js",
-    "main.js.map": "/spotify-tools/static/js/main.84950535.chunk.js.map",
-    "runtime~main.js": "/spotify-tools/static/js/runtime~main.cc055dca.js",
-    "runtime~main.js.map": "/spotify-tools/static/js/runtime~main.cc055dca.js.map",
-    "static/js/2.94440837.chunk.js": "/spotify-tools/static/js/2.94440837.chunk.js",
-    "static/js/2.94440837.chunk.js.map": "/spotify-tools/static/js/2.94440837.chunk.js.map",
-    "index.html": "/spotify-tools/index.html",
-    "precache-manifest.27eb3c8e76c354932a0b14a612bf071f.js": "/spotify-tools/precache-manifest.27eb3c8e76c354932a0b14a612bf071f.js",
-    "service-worker.js": "/spotify-tools/service-worker.js",
-    "static/css/main.f84b1cd2.chunk.css.map": "/spotify-tools/static/css/main.f84b1cd2.chunk.css.map",
-    "static/media/App.css": "/spotify-tools/static/media/GothamMedium_1.ba7ee4ff.woff"
+    "main.css": "/toolify/static/css/main.15ff6fde.chunk.css",
+    "main.js": "/toolify/static/js/main.f10aca0b.chunk.js",
+    "main.js.map": "/toolify/static/js/main.f10aca0b.chunk.js.map",
+    "runtime~main.js": "/toolify/static/js/runtime~main.c3e6625e.js",
+    "runtime~main.js.map": "/toolify/static/js/runtime~main.c3e6625e.js.map",
+    "static/js/2.94440837.chunk.js": "/toolify/static/js/2.94440837.chunk.js",
+    "static/js/2.94440837.chunk.js.map": "/toolify/static/js/2.94440837.chunk.js.map",
+    "index.html": "/toolify/index.html",
+    "precache-manifest.e5108dfa8f3e370a486453f6b36d1ef9.js": "/toolify/precache-manifest.e5108dfa8f3e370a486453f6b36d1ef9.js",
+    "service-worker.js": "/toolify/service-worker.js",
+    "static/css/main.15ff6fde.chunk.css.map": "/toolify/static/css/main.15ff6fde.chunk.css.map",
+    "static/media/App.css": "/toolify/static/media/GothamMedium_1.ba7ee4ff.woff"
   }
 }
