@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { BrowserRouter, NavLink, Route, Switch } from 'react-router-dom';
 import './App.css';
 import Spotify from 'spotify-web-api-js';
+import client from './client';
+import welcome from './img/welcome.png';
 
 // import history from "./history";
 // import queryString from 'query-string';
@@ -20,9 +22,8 @@ import NotFound from "./components/NotFound";
 
 export const authEndpoint = 'https://accounts.spotify.com/authorize';
 
-const clientId = "8df5f41dfa6d43e0b6f2bf7be259268d";
-const redirectUri = "http%3A%2F%2Flocalhost%3A3000%2F";
-// var redirectUri = "https%3A%2F%2Fhektortor.github.io%2Fspotify-tools%2F";
+const clientId = client.id;
+const redirectUri = client.redirectUri;
 const scopes = [
   "user-read-private",
   "user-read-email",
@@ -170,8 +171,11 @@ class App extends Component {
                 </Switch>
                 :
                 <div>
-                  <h2 style={{ fontFamily: 'Gotham Bold' }}>Please login and try again!</h2>
-                  <Button href={`${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join("%20")}&response_type=token&show_dialog=true`} variant="success" style={{ margin: '20px', background: 'rgb(15, 185, 88)', borderRadius: '30px', textTransform: 'uppercase', fontWeight: '600', paddingRight: '30px', paddingLeft: '30px', fontSize: '14px' }}>Login with Spotify</Button>
+                  <h2 style={{ fontFamily: 'Gotham Bold', margin: '30px' }}>Welcome to Toolify</h2>
+                  <div style={{ borderRadius: '32px', background: 'rgb(24, 24, 24)', width: '96px', height: '96px', margin: 'auto', textAlign: 'center' }}>
+                    <img src={welcome} alt="welcome" />
+                  </div>
+                  <Button className="button" href={`${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join("%20")}&response_type=token&show_dialog=true`} variant="success" style={{ margin: '30px' }}>Login with Spotify</Button>
                 </div>
             }
           </div>
