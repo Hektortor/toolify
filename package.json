@@ -1,8 +1,8 @@
 {
-  "name": "spotify-tools",
+  "name": "toolify",
   "version": "1.0.3",
   "private": true,
-  "homepage": "https://hektortor.github.io/spotify-tools",
+  "homepage": "https://hektortor.github.io/toolify",
   "dependencies": {
     "gh-pages": "^2.0.1",
     "query-string": "^6.5.0",
