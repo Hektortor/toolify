@@ -17,8 +17,8 @@ import NotFound from "./components/NotFound";
 export var authEndpoint = 'https://accounts.spotify.com/authorize';
 
 var clientId = "8df5f41dfa6d43e0b6f2bf7be259268d";
-var redirectUri = "http%3A%2F%2Flocalhost%3A3000%2F";
-// var redirectUri = "https%3A%2F%2Fhektortor.github.io%2Fspotify-tools%2F";
+// var redirectUri = "http%3A%2F%2Flocalhost%3A3000%2F";
+var redirectUri = "https%3A%2F%2Fhektortor.github.io%2Fspotify-tools%2F";
 var scopes = [
   "user-read-private",
   "user-read-email",
