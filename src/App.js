@@ -15,13 +15,14 @@ import Releases from "./components/Releases";
 import Feelings from "./components/Feelings";
 import Tops from "./components/Tops";
 import Statistics from "./components/Statistics";
+import About from "./components/About";
 import NotFound from "./components/NotFound";
 
 export const authEndpoint = 'https://accounts.spotify.com/authorize';
 
 const clientId = "8df5f41dfa6d43e0b6f2bf7be259268d";
-// const redirectUri = "http%3A%2F%2Flocalhost%3A3000%2F";
-var redirectUri = "https%3A%2F%2Fhektortor.github.io%2Fspotify-tools%2F";
+const redirectUri = "http%3A%2F%2Flocalhost%3A3000%2F";
+// var redirectUri = "https%3A%2F%2Fhektortor.github.io%2Fspotify-tools%2F";
 const scopes = [
   "user-read-private",
   "user-read-email",
@@ -121,6 +122,7 @@ class App extends Component {
                 <NavLink className="link" exact to="/feelings">Feelings</NavLink>
                 <NavLink className="link" exact to="/tops">Tops</NavLink>
                 <NavLink className="link" exact to="/statistics">Statistics</NavLink>
+                <NavLink className="link" exact to="/about">About</NavLink>
               </Nav>
               <Nav>
                 {
@@ -163,6 +165,7 @@ class App extends Component {
                   <Route path="/feelings" component={Feelings} />
                   <Route path="/tops" component={Tops} />
                   <Route path="/statistics" component={Statistics} />
+                  <Route path="/about" component={About} />
                   <Route component={NotFound} />
                 </Switch>
                 :
