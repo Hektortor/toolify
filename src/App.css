@@ -1,15 +1,152 @@
-.App {
-  text-align: center;
+@font-face {
+  font-family: 'Gotham Book';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Gotham Book'), url('./fonts/GothamBook.woff') format('woff');
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+
+@font-face {
+  font-family: 'Gotham Book Italic';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Gotham Book Italic'), url('./fonts/GothamBookItalic.woff') format('woff');
+}
+
+
+@font-face {
+  font-family: 'Gotham Light';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Gotham Light'), url('./fonts/GothamLight.woff') format('woff');
+}
+
+
+@font-face {
+  font-family: 'Gotham Light Italic';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Gotham Light Italic'), url('./fonts/GothamLightItalic.woff') format('woff');
+}
+
+
+@font-face {
+  font-family: 'Gotham Medium';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Gotham Medium'), url('./fonts/GothamMedium.woff') format('woff');
+}
+
+
+@font-face {
+  font-family: 'Gotham Medium_1';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Gotham Medium'), url('./fonts/GothamMedium_1.woff') format('woff');
+}
+
+
+@font-face {
+  font-family: 'Gotham Medium';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Gotham Medium'), url('./fonts/GothamMediumItalic.woff') format('woff');
+}
+
+
+@font-face {
+  font-family: 'Gotham Bold';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Gotham Bold'), url('./fonts/GothamBold.woff') format('woff');
+}
+
+
+@font-face {
+  font-family: 'Gotham Bold';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Gotham Bold'), url('./fonts/Gotham-Bold.woff') format('woff');
+}
+
+
+@font-face {
+  font-family: 'Gotham Bold Italic';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Gotham Bold Italic'), url('./fonts/GothamBoldItalic.woff') format('woff');
+}
+
+
+@font-face {
+  font-family: 'Gotham Black Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Gotham Black Regular'), url('./fonts/Gotham-Black.woff') format('woff');
+}
+
+
+@font-face {
+  font-family: 'Gotham Light Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Gotham Light Regular'), url('./fonts/Gotham-Light.woff') format('woff');
+}
+
+
+@font-face {
+  font-family: 'Gotham Thin Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Gotham Thin Regular'), url('./fonts/Gotham-Thin.woff') format('woff');
+}
+
+
+@font-face {
+  font-family: 'Gotham XLight Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Gotham XLight Regular'), url('./fonts/Gotham-XLight.woff') format('woff');
+}
+
+
+@font-face {
+  font-family: 'Gotham Book Italic';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Gotham Book Italic'), url('./fonts/Gotham-BookItalic.woff') format('woff');
+}
+
+
+@font-face {
+  font-family: 'Gotham Thin Italic';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Gotham Thin Italic'), url('./fonts/Gotham-ThinItalic.woff') format('woff');
+}
+
+
+@font-face {
+  font-family: 'Gotham Ultra Italic';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Gotham Ultra Italic'), url('./fonts/Gotham-UltraItalic.woff') format('woff');
+}
+
+
+@font-face {
+  font-family: 'Gotham XLight Italic';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Gotham XLight Italic'), url('./fonts/Gotham-XLightItalic.woff') format('woff');
+}
+
+.App {
+  color: white;
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: rgb(24, 24, 24);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -20,14 +157,84 @@
 }
 
 .App-link {
-  color: #61dafb;
+  color: rgb(15, 185, 88);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+th {
+  text-align: left;
+}
+
+#formLayout {
+  margin: 15px;
+  text-align: center;
+  padding: 5px;
+}
+
+.link {
+  color: white;
+  font-family: 'Gotham Light';
+  text-decoration: none;
+  margin: 4px;
+}
+
+.link:active {
+  color: rgb(15, 185, 88);
+  text-decoration: none;
+}
+
+.link:hover {
+  color: rgb(15, 185, 88);
+  text-decoration: none;
+}
+
+.trackCard {
+  background: rgb(24, 24, 24);
+  color: white;
+  text-align: left;
+  font-size: 12;
+}
+
+.trackTitle {
+  font-size: 14;
+  font-weight: bold;
+}
+
+.trackSubTitle {
+  font-size: 13;
+  font-weight: normal;
+  color: grey;
+}
+
+.badge {
+  text-transform: uppercase;
+  margin-right: 3px;
+  margin-left: 3px;
+  margin-top: 1px;
+  margin-bottom: 1px;
+  font-weight: 800;
+  font-size: 14;
+}
+
+.cardDiv {
+  float: left;
+}
+
+.box1 {
+  float: left;
+  width: 49%;
+  margin-right: 2%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.box2 {
+  float: right;
+  width: 49%;
+  margin-right: 0;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.card2:hover {
+  box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
 }
