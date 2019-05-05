@@ -114,9 +114,9 @@ class App extends Component {
       <BrowserRouter basename={process.env.PUBLIC_URL}>
         <div className="App">
           <Navbar collapseOnSelect expand="lg" variant="dark" sticky="top" style={{ background: 'black' }}>
-            <NavLink to="/"><Navbar.Brand style={{ fontFamily: "Gotham Bold" }}>Spotify Tools</Navbar.Brand></NavLink>
+            <NavLink to="/"><Navbar.Brand style={{ fontFamily: "Gotham Bold" }}>Toolify</Navbar.Brand></NavLink>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-            <Navbar.Collapse id="responsive-navbar-nav">
+            <Navbar.Collapse id="responsive-navbar-nav" style={{ textAlign: 'center' }}>
               <Nav className="mr-auto">
                 <NavLink className="link" exact to="/">Home</NavLink>
                 <NavLink className="link" exact to="/releases">Releases</NavLink>
@@ -140,15 +140,17 @@ class App extends Component {
             loggedIn
               ?
               <a href={this.state.currentUser.spotifyUrl} target="_blank" rel="noopener noreferrer">
-                <div className="card" style={{ background: 'rgb(24, 24, 24)', borderColor: '#464646', borderWidth: '2px' }}>
-                  <div>
-                    <div style={{ float: 'left' }}>
-                      <img src={this.state.currentUser.imageUrl} style={{ borderRadius: '26px', borderColor: '#464646', borderWidth: '7px', width: '64px', height: '64px', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }} alt="cover" />
-                    </div>
-                    <div style={{ float: 'left', paddingLeft: '10px', paddingRight: '10px', paddingTop: '3px', paddingBottom: '3px', maxWidth: '70%', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }} >
-                      <div style={{ fontSize: '14px', fontWeight: '500', color: 'white', margin: 'auto', boxSizing: 'border-box' }}>{this.state.currentUser.name} · {this.state.currentUser.country}</div>
-                      <div style={{ fontSize: '12px', fontWeight: '400', color: 'grey', margin: 'auto', boxSizing: 'border-box' }}>{this.state.currentUser.email}</div>
-                      <div style={{ fontSize: '12px', fontWeight: '400', color: 'grey', margin: 'auto', boxSizing: 'border-box' }}>{this.state.currentUser.spotifyUrl}</div>
+                <div className="container">
+                  <div className="card" style={{ background: 'rgb(24, 24, 24)', borderColor: '#464646', borderWidth: '2px' }}>
+                    <div>
+                      <div style={{ float: 'left' }}>
+                        <img src={this.state.currentUser.imageUrl} style={{ borderRadius: '26px', borderColor: '#464646', borderWidth: '7px', width: '64px', height: '64px', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }} alt="cover" />
+                      </div>
+                      <div style={{ float: 'left', paddingLeft: '10px', paddingRight: '10px', paddingTop: '3px', paddingBottom: '3px', maxWidth: '70%', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }} >
+                        <div style={{ fontSize: '14px', fontWeight: '500', color: 'white', margin: 'auto', boxSizing: 'border-box' }}>{this.state.currentUser.name} · {this.state.currentUser.country}</div>
+                        <div style={{ fontSize: '12px', fontWeight: '400', color: 'grey', margin: 'auto', boxSizing: 'border-box' }}>{this.state.currentUser.email}</div>
+                        <div style={{ fontSize: '12px', fontWeight: '400', color: 'grey', margin: 'auto', boxSizing: 'border-box' }}>{this.state.currentUser.spotifyUrl}</div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -156,7 +158,7 @@ class App extends Component {
               :
               <div></div>
           }
-          <div className="content" style={{ height: '100vh' }}>
+          <div style={{ height: '100vh' }}>
             {
               loggedIn
                 ?

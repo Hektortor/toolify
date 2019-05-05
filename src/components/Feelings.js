@@ -496,8 +496,8 @@ class Feelings extends Component {
         var created = this.state.created;
         var error = this.state.error;
         return (
-            <div className="App">
-                <h1 style={{ fontFamily: 'Gotham Bold' }}>Create playlists from your library with your current feelings</h1>
+            <div className="App container">
+                <h1 className="title">Create playlists from your library with your current feelings</h1>
                 <div className="formLayout">
                     <Form>
                         <Form.Group controlId="form.name">

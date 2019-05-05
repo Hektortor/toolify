@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import '../App.css';
-import { withRouter, NavLink } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 class About extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="container">
         <h2 style={{ fontFamily: 'Gotham Bold', marginTop: '40px' }}>Made by Viktor Frohnapfel with ♥</h2>
       </div>
     );

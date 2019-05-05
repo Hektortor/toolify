@@ -162,8 +162,12 @@
   color: rgb(15, 185, 88);
 }
 
+.title {
+  font-family: 'Gotham Bold';
+  margin-top: 30px;
+}
+
 .button {
-  width: 260px;
   background: rgb(15, 185, 88);
   border-radius: 30px;
   text-transform: uppercase;
@@ -236,16 +240,11 @@
 
 .card {
   padding: 20px;
-  margin: 10px;
-  height: 100%;
-  max-width: 700px;
-  min-width: 300px;
   color: white;
   background: #fff;
   font-family: 'Gotham Bold';
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 32px;
-  outline: none;
   cursor: pointer;
   text-align: left;
   transition: 0.3s;
@@ -255,10 +254,7 @@
 
 .cardRelease {
   padding: 10px;
-  margin: 10px;
-  height: 100%;
-  max-width: 700px;
-  min-width: 370px;
+  margin-top: 14px;
   color: white;
   background: #fff;
   font-family: 'Gotham Bold';

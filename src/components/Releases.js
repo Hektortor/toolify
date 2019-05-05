@@ -21,7 +21,8 @@ class Releases extends Component {
             lastArtistId: "",
             lastReleaseId: "",
             typeSelection: 1,
-            loading: false
+            loading: false,
+            error: false
         };
         if (params.access_token) {
             spotifyWebApi.setAccessToken(params.access_token);
@@ -151,10 +152,10 @@ class Releases extends Component {
     //     }
     // }
 
-    forEachPromiseReleases(list, options, newList, func) {
+    forEachPromiseReleases(list, options, newList, func, context) {
         return list.reduce(function (promise, list) {
             return promise.then(function () {
-                return func(list, options, newList);
+                return func(list, options, newList, context);
             });
         }, Promise.resolve());
     }
@@ -201,24 +202,32 @@ class Releases extends Component {
     //     });
     // }
 
-    addReleases(artist, options, newReleases) {
+    addReleases(artist, options, newReleases, context) {
         return new Promise((resolve, reject) => {
             process.nextTick(() => {
-                spotifyWebApi.getArtistAlbums(artist.id, options).then((response) => {
-                    response.items.forEach(function (release) {
-                        var newRelease = {
-                            interpret: artist.name,
-                            id: release.id,
-                            name: release.name,
-                            type: release.album_type,
-                            date: release.release_date,
-                            url: release.external_urls.spotify,
-                            imageSmall: release.images[2].url
-                        };
-                        newReleases.push(newRelease);
+                spotifyWebApi.getArtistAlbums(artist.id, options)
+                    .then((response) => {
+                        response.items.forEach(function (release) {
+                            var newRelease = {
+                                interpret: artist.name,
+                                id: release.id,
+                                name: release.name,
+                                type: release.album_type,
+                                date: release.release_date,
+                                url: release.external_urls.spotify,
+                                imageSmall: release.images[2].url
+                            };
+                            newReleases.push(newRelease);
+                        });
+                        resolve();
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                        context.setState({
+                            loading: false,
+                            error: true
+                        });
                     });
-                    resolve();
-                });
             });
         });
     }
@@ -228,6 +237,7 @@ class Releases extends Component {
         const artists = this.state.artists;
         var newReleases = [];
         var selection = this.state.typeSelection;
+        var context = this;
 
         var options = {};
         switch (selection) {
@@ -245,7 +255,7 @@ class Releases extends Component {
                 break;
         }
 
-        this.forEachPromiseReleases(artists, options, newReleases, this.addReleases).then(() => {
+        this.forEachPromiseReleases(artists, options, newReleases, this.addReleases, context).then(() => {
             console.log(newReleases.length + " Releases loaded");
             newReleases.sort(this.compareReleases);
             this.setState({
@@ -276,53 +286,70 @@ class Releases extends Component {
                     options = { limit: 50, after: lastArtistId };
                 }
 
-                spotifyWebApi.getFollowedArtists(options).then((response) => {
+                spotifyWebApi.getFollowedArtists(options)
+                    .then((response) => {
 
-                    response.artists.items.forEach(function (artist) {
+                        response.artists.items.forEach(function (artist) {
 
-                        var newArtist = { id: artist.id, name: artist.name };
-                        newArtists.push(newArtist);
-                        lastArtistId = artist.id;
+                            var newArtist = { id: artist.id, name: artist.name };
+                            newArtists.push(newArtist);
+                            lastArtistId = artist.id;
+                        });
+                        context.setState({
+                            lastArtistId: lastArtistId
+                        });
+                        resolve();
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                        context.setState({
+                            loading: false,
+                            error: true
+                        });
                     });
-                    context.setState({
-                        lastArtistId: lastArtistId
-                    });
-                    resolve();
-                });
             });
         });
     }
 
     getFollowedArtists() {
 
-        spotifyWebApi.getFollowedArtists({ limit: 1 }).then((response) => {
+        var context = this;
 
-            var emptyOptions = "";
-            var total = response.artists.total;
-            var newArtists = [];
-            var list = [];
-            var length = total / 50;
-            var lastArtistId = "";
-            var context = this;
+        spotifyWebApi.getFollowedArtists({ limit: 1 })
+            .then((response) => {
 
-            for (var i = 0; i < length; i++) {
-                list.push(1);
-            }
+                var emptyOptions = "";
+                var total = response.artists.total;
+                var newArtists = [];
+                var list = [];
+                var length = total / 50;
+                var lastArtistId = "";
 
-            this.forEachPromiseArtists(list, emptyOptions, newArtists, lastArtistId, context, this.addArtists).then(() => {
-                console.log(newArtists.length + " Artists loaded");
-                this.setState({
-                    artists: newArtists
+                for (var i = 0; i < length; i++) {
+                    list.push(1);
+                }
+
+                this.forEachPromiseArtists(list, emptyOptions, newArtists, lastArtistId, context, this.addArtists).then(() => {
+                    console.log(newArtists.length + " Artists loaded");
+                    this.setState({
+                        artists: newArtists
+                    });
+                    this.getLatestReleases();
                 });
-                this.getLatestReleases();
+            })
+            .catch((err) => {
+                console.log(err);
+                context.setState({
+                    loading: false,
+                    error: true
+                });
             });
-        });
-
     }
 
     getNewFollowedArtists() {
         this.setState({
-            loading: true
+            loading: true,
+            error: false
         });
         var artists = this.state.artists;
         if (typeof artists !== 'undefined' && artists.length > 0) {
@@ -382,74 +409,85 @@ class Releases extends Component {
     render() {
         var loading = this.state.loading;
         var type = this.state.typeSelection;
+        var error = this.state.error;
         return (
             <div className="App">
+                <div className="container">
 
-                <h1 style={{ fontFamily: 'Gotham Bold' }}>New Releases of your Followed Artists</h1>
-                {!loading ? <div></div> : <Spinner animation="grow" variant="success" />}
+                    <h1 className="title">New Releases of your Followed Artists</h1>
+                    {!loading ? <div></div> : <Spinner animation="grow" variant="success" />}
 
-                <div className="formLayout">
+                    <div className="formLayout">
 
-                    <ToggleButtonGroup variant="success" type="radio" name="typeSelection" defaultValue={1} style={{ margin: '8px', padding: '0px', background: 'rgb(15, 185, 88)', borderRadius: '30px', textTransform: 'uppercase', fontWeight: '600', fontSize: '14px', cursor: 'pointer', textAlign: 'center' }}>
+                        <ToggleButtonGroup variant="success" type="radio" name="typeSelection" defaultValue={1} style={{ margin: '8px', padding: '0px', background: 'rgb(15, 185, 88)', borderRadius: '30px', textTransform: 'uppercase', fontWeight: '600', fontSize: '14px', cursor: 'pointer', textAlign: 'center' }}>
 
-                        {
-                            type === 1 ?
-                                <ToggleButton variant="success" style={{ background: 'black', color: 'rgb(15, 185, 88)', textTransform: 'uppercase', fontWeight: '600', fontSize: '14px', cursor: 'pointer', borderRadius: '30px 2px 2px 30px', paddingLeft: '30px' }} onClick={() => this.setType(1)} value={1}>Albums</ToggleButton>
-                                :
-                                <ToggleButton variant="success" style={{ background: 'black', color: 'white', textTransform: 'uppercase', fontWeight: '600', fontSize: '14px', cursor: 'pointer', borderRadius: '30px 2px 2px 30px', paddingLeft: '30px' }} onClick={() => this.setType(1)} value={1}>Albums</ToggleButton>
-                        }
-                        {
-                            type === 2 ?
-                                <ToggleButton variant="success" style={{ background: 'black', color: 'rgb(15, 185, 88)', textTransform: 'uppercase', fontWeight: '600', fontSize: '14px', cursor: 'pointer' }} onClick={() => this.setType(2)} value={2}>Singles</ToggleButton>
-                                :
-                                <ToggleButton variant="success" style={{ background: 'black', color: 'white', textTransform: 'uppercase', fontWeight: '600', fontSize: '14px', cursor: 'pointer' }} onClick={() => this.setType(2)} value={2}>Singles</ToggleButton>
-                        }
-                        {
-                            type === 3 ?
-                                <ToggleButton variant="success" style={{ background: 'black', color: 'rgb(15, 185, 88)', textTransform: 'uppercase', fontWeight: '600', fontSize: '14px', cursor: 'pointer', borderRadius: '2px 30px 30px 2px', paddingRight: '30px' }} onClick={() => this.setType(3)} value={3}>Both</ToggleButton>
-                                :
-                                <ToggleButton variant="success" style={{ background: 'black', color: 'white', textTransform: 'uppercase', fontWeight: '600', fontSize: '14px', cursor: 'pointer', borderRadius: '2px 30px 30px 2px', paddingRight: '30px' }} onClick={() => this.setType(3)} value={3}>Both</ToggleButton>
-                        }
+                            {
+                                type === 1 ?
+                                    <ToggleButton variant="success" style={{ background: 'black', color: 'rgb(15, 185, 88)', textTransform: 'uppercase', fontWeight: '600', fontSize: '14px', cursor: 'pointer', borderRadius: '30px 2px 2px 30px', paddingLeft: '30px' }} onClick={() => this.setType(1)} value={1}>Albums</ToggleButton>
+                                    :
+                                    <ToggleButton variant="success" style={{ background: 'black', color: 'white', textTransform: 'uppercase', fontWeight: '600', fontSize: '14px', cursor: 'pointer', borderRadius: '30px 2px 2px 30px', paddingLeft: '30px' }} onClick={() => this.setType(1)} value={1}>Albums</ToggleButton>
+                            }
+                            {
+                                type === 2 ?
+                                    <ToggleButton variant="success" style={{ background: 'black', color: 'rgb(15, 185, 88)', textTransform: 'uppercase', fontWeight: '600', fontSize: '14px', cursor: 'pointer' }} onClick={() => this.setType(2)} value={2}>Singles</ToggleButton>
+                                    :
+                                    <ToggleButton variant="success" style={{ background: 'black', color: 'white', textTransform: 'uppercase', fontWeight: '600', fontSize: '14px', cursor: 'pointer' }} onClick={() => this.setType(2)} value={2}>Singles</ToggleButton>
+                            }
+                            {
+                                type === 3 ?
+                                    <ToggleButton variant="success" style={{ background: 'black', color: 'rgb(15, 185, 88)', textTransform: 'uppercase', fontWeight: '600', fontSize: '14px', cursor: 'pointer', borderRadius: '2px 30px 30px 2px', paddingRight: '30px' }} onClick={() => this.setType(3)} value={3}>Both</ToggleButton>
+                                    :
+                                    <ToggleButton variant="success" style={{ background: 'black', color: 'white', textTransform: 'uppercase', fontWeight: '600', fontSize: '14px', cursor: 'pointer', borderRadius: '2px 30px 30px 2px', paddingRight: '30px' }} onClick={() => this.setType(3)} value={3}>Both</ToggleButton>
+                            }
 
-                    </ToggleButtonGroup>
+                        </ToggleButtonGroup>
 
-                    <Button className="button" variant="success" onClick={() => this.getNewFollowedArtists()}>Check followed artists</Button>
+                        <Button className="button" variant="success" onClick={() => this.getNewFollowedArtists()}>Check followed artists</Button>
 
-                </div>
+                    </div>
 
-                <ListGroup style={{ background: 'black', textAlign: 'center' }}>
                     {
-                        this.state.releases.map(item => {
-                            return (
-                                <div className="cardRelease" style={{ background: 'rgb(24, 24, 24)', textAlign: 'center' }}>
+                        error
+                            ?
+                            <h3 style={{ marginTop: '20px', fontFamily: 'Gotham Bold' }}>Error occurred</h3>
+                            :
+                            <div></div>
+                    }
 
-                                    <div id="oben" style={{ height: '64px', clear: 'both' }}>
+                    <ListGroup style={{ background: 'black', textAlign: 'center' }}>
+                        {
+                            this.state.releases.map(item => {
+                                return (
+                                    <div key={item.id} className="container cardRelease" style={{ background: 'rgb(24, 24, 24)', textAlign: 'center' }}>
 
-                                        <div id="obenRechts" style={{ float: 'right' }}>
-                                            <img style={{ width: 30, height: 30, marginTop: '17px', marginBottom: '17px', cursor: 'pointer' }} alt="cover" src={check} onClick={() => this.addAlbumToLibrary(item.id, item.name)} />
-                                        </div>
+                                        <div id="oben" style={{ height: '64px', clear: 'both' }}>
 
-                                        <div id="obenLinks" style={{ float: 'left', height: '64px' }}>
-                                            <a href={item.url} target="_blank" rel="noopener noreferrer">
-                                                <img src={item.imageSmall} style={{ marginRight: '4px', float: 'left', borderRadius: '26px', borderColor: '#464646', borderWidth: '7px', width: '64px', height: '64px' }} alt="cover" />
-                                            </a>
-                                            <div style={{ float: 'left', marginTop: '10px', marginBottom: '10px', marginLeft: '4px', textAlign: 'left' }}>
-                                                <div style={{ fontSize: '14px', fontWeight: '500', color: 'white', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{item.name}</div>
-                                                <div style={{ fontSize: '12px', fontWeight: '400', color: 'grey', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{item.interpret}</div>
+                                            <div id="obenRechts" style={{ float: 'right' }}>
+                                                <img style={{ width: 30, height: 30, marginTop: '17px', marginBottom: '17px', cursor: 'pointer' }} alt="cover" src={check} onClick={() => this.addAlbumToLibrary(item.id, item.name)} />
+                                            </div>
+
+                                            <div id="obenLinks" style={{ float: 'left', height: '64px' }}>
+                                                <a href={item.url} target="_blank" rel="noopener noreferrer">
+                                                    <img src={item.imageSmall} style={{ marginRight: '4px', float: 'left', borderRadius: '26px', borderColor: '#464646', borderWidth: '7px', width: '64px', height: '64px' }} alt="cover" />
+                                                </a>
+                                                <div style={{ float: 'left', marginTop: '10px', marginBottom: '10px', marginLeft: '4px', textAlign: 'left', maxWidth: '70%', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }}>
+                                                    <div style={{ fontSize: '14px', fontWeight: '500', color: 'white', margin: 'auto', boxSizing: 'border-box' }}>{item.name}</div>
+                                                    <div style={{ fontSize: '12px', fontWeight: '400', color: 'grey', margin: 'auto', boxSizing: 'border-box' }}>{item.interpret}</div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
 
-                                    <div id="unten" style={{ clear: 'both', marginTop: '8px', color: 'grey' }}>
-                                        <div style={{ marginLeft: '6px', fontSize: '14px', fontWeight: '500', float: 'left', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{this.formatDate(item.date)}</div>
-                                        <div style={{ marginRight: '6px', fontSize: '12px', fontWeight: '400', float: 'right', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{item.type}</div>
+                                        <div id="unten" style={{ clear: 'both', marginTop: '8px', color: 'grey' }}>
+                                            <div style={{ marginLeft: '6px', fontSize: '14px', fontWeight: '500', float: 'left', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{this.formatDate(item.date)}</div>
+                                            <div style={{ marginRight: '6px', fontSize: '12px', fontWeight: '400', float: 'right', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{item.type}</div>
+                                        </div>
                                     </div>
-                                </div>
-                            )
-                        })
-                    }
-                </ListGroup>
-            </div >
+                                )
+                            })
+                        }
+                    </ListGroup>
+                </div>
+            </div>
         );
     }
 }

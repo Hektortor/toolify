@@ -211,63 +211,65 @@ class Tops extends Component {
         var error = this.state.error;
         var range = this.state.rangeSelection;
         return (
-            <div className="Tops" style={{ background: 'black' }}>
+            <div className="Tops">
+                <div className="container">
 
-                <h1 style={{ fontFamily: 'Gotham Bold', color: 'white', marginTop: '0px' }}>Get Your Personal Top Playlists</h1>
-                {!loading ? <div></div> : <Spinner animation="grow" variant="success" />}
+                    <h1 className="title">Get Your Personal Top Playlists</h1>
+                    {!loading ? <div></div> : <Spinner animation="grow" variant="success" />}
 
-                <div className="formLayout" style={{ margin: '0px', paddingTop: '20px', paddingBottom: '20px' }}>
+                    <div className="formLayout" style={{ margin: '0px', paddingTop: '20px', paddingBottom: '20px' }}>
 
-                    <ToggleButtonGroup variant="success" type="radio" name="rangeSelection" defaultValue={1} style={{ margin: '8px', padding: '0px', background: 'rgb(15, 185, 88)', borderRadius: '30px', textTransform: 'uppercase', fontWeight: '600', fontSize: '14px', cursor: 'pointer', textAlign: 'center' }}>
+                        <ToggleButtonGroup variant="success" type="radio" name="rangeSelection" defaultValue={1} style={{ margin: '8px', padding: '0px', background: 'rgb(15, 185, 88)', borderRadius: '30px', textTransform: 'uppercase', fontWeight: '600', fontSize: '14px', cursor: 'pointer', textAlign: 'center' }}>
+
+                            {
+                                range === 1 ?
+                                    <ToggleButton variant="success" style={{ background: 'black', color: 'rgb(15, 185, 88)', textTransform: 'uppercase', fontWeight: '600', fontSize: '14px', cursor: 'pointer', borderRadius: '30px 2px 2px 30px', paddingLeft: '30px' }} onClick={() => this.setRange(1)} value={1}>1 year</ToggleButton>
+                                    :
+                                    <ToggleButton variant="success" style={{ background: 'black', color: 'white', textTransform: 'uppercase', fontWeight: '600', fontSize: '14px', cursor: 'pointer', borderRadius: '30px 2px 2px 30px', paddingLeft: '30px' }} onClick={() => this.setRange(1)} value={1}>1 year</ToggleButton>
+                            }
+                            {
+                                range === 2 ?
+                                    <ToggleButton variant="success" style={{ background: 'black', color: 'rgb(15, 185, 88)', textTransform: 'uppercase', fontWeight: '600', fontSize: '14px', cursor: 'pointer' }} onClick={() => this.setRange(2)} value={2}>6 months</ToggleButton>
+                                    :
+                                    <ToggleButton variant="success" style={{ background: 'black', color: 'white', textTransform: 'uppercase', fontWeight: '600', fontSize: '14px', cursor: 'pointer' }} onClick={() => this.setRange(2)} value={2}>6 months</ToggleButton>
+                            }
+                            {
+                                range === 3 ?
+                                    <ToggleButton variant="success" style={{ background: 'black', color: 'rgb(15, 185, 88)', textTransform: 'uppercase', fontWeight: '600', fontSize: '14px', cursor: 'pointer', borderRadius: '2px 30px 30px 2px', paddingRight: '30px' }} onClick={() => this.setRange(3)} value={3}>4 weeks</ToggleButton>
+                                    :
+                                    <ToggleButton variant="success" style={{ background: 'black', color: 'white', textTransform: 'uppercase', fontWeight: '600', fontSize: '14px', cursor: 'pointer', borderRadius: '2px 30px 30px 2px', paddingRight: '30px' }} onClick={() => this.setRange(3)} value={3}>4 weeks</ToggleButton>
+                            }
+
+                        </ToggleButtonGroup>
+
+                        <Button variant="success" style={{ width: '260px', background: 'rgb(15, 185, 88)', borderRadius: '30px', textTransform: 'uppercase', fontWeight: '600', paddingRight: '30px', paddingLeft: '30px', fontSize: '14px' }} onClick={() => this.getTops()}>Get top tracks playlist</Button>
 
                         {
-                            range === 1 ?
-                                <ToggleButton variant="success" style={{ background: 'black', color: 'rgb(15, 185, 88)', textTransform: 'uppercase', fontWeight: '600', fontSize: '14px', cursor: 'pointer', borderRadius: '30px 2px 2px 30px', paddingLeft: '30px' }} onClick={() => this.setRange(1)} value={1}>1 year</ToggleButton>
+                            error
+                                ?
+                                <h3 style={{ marginTop: '20px', fontFamily: 'Gotham Bold' }}>Error occurred</h3>
                                 :
-                                <ToggleButton variant="success" style={{ background: 'black', color: 'white', textTransform: 'uppercase', fontWeight: '600', fontSize: '14px', cursor: 'pointer', borderRadius: '30px 2px 2px 30px', paddingLeft: '30px' }} onClick={() => this.setRange(1)} value={1}>1 year</ToggleButton>
+                                <div></div>
                         }
                         {
-                            range === 2 ?
-                                <ToggleButton variant="success" style={{ background: 'black', color: 'rgb(15, 185, 88)', textTransform: 'uppercase', fontWeight: '600', fontSize: '14px', cursor: 'pointer' }} onClick={() => this.setRange(2)} value={2}>6 months</ToggleButton>
-                                :
-                                <ToggleButton variant="success" style={{ background: 'black', color: 'white', textTransform: 'uppercase', fontWeight: '600', fontSize: '14px', cursor: 'pointer' }} onClick={() => this.setRange(2)} value={2}>6 months</ToggleButton>
-                        }
-                        {
-                            range === 3 ?
-                                <ToggleButton variant="success" style={{ background: 'black', color: 'rgb(15, 185, 88)', textTransform: 'uppercase', fontWeight: '600', fontSize: '14px', cursor: 'pointer', borderRadius: '2px 30px 30px 2px', paddingRight: '30px' }} onClick={() => this.setRange(3)} value={3}>4 weeks</ToggleButton>
-                                :
-                                <ToggleButton variant="success" style={{ background: 'black', color: 'white', textTransform: 'uppercase', fontWeight: '600', fontSize: '14px', cursor: 'pointer', borderRadius: '2px 30px 30px 2px', paddingRight: '30px' }} onClick={() => this.setRange(3)} value={3}>4 weeks</ToggleButton>
-                        }
-
-                    </ToggleButtonGroup>
-
-                    <Button variant="success" style={{ width: '260px', background: 'rgb(15, 185, 88)', borderRadius: '30px', textTransform: 'uppercase', fontWeight: '600', paddingRight: '30px', paddingLeft: '30px', fontSize: '14px' }} onClick={() => this.getTops()}>Get top tracks playlist</Button>
-
-                    {
-                        error
-                            ?
-                            <h3 style={{ marginTop: '20px', fontFamily: 'Gotham Bold' }}>Error occurred</h3>
-                            :
-                            <div></div>
-                    }
-                    {
-                        created ?
-                            <a href={this.state.currentPlaylist.uri} target="_blank" rel="noopener noreferrer">
-                                <div className="card" style={{ background: 'rgb(24, 24, 24)', borderColor: '#464646', borderWidth: '2px' }}>
-                                    <div>
-                                        <div style={{ float: 'left', borderRadius: '4px' }}>
-                                            <img src={this.state.currentPlaylist.image} style={{ borderRadius: '26px', borderColor: '#464646', borderWidth: '7px', width: '64px', height: '64px' }} alt="cover" />
-                                        </div>
-                                        <div style={{ float: 'left', paddingLeft: '6px', paddingRight: '10px', paddingTop: '8px', paddingBottom: '8px' }} >
-                                            <div style={{ fontSize: '14px', fontWeight: '500', color: 'white' }}>{this.state.currentPlaylist.name}</div>
-                                            <div style={{ fontSize: '12px', fontWeight: '500', color: 'white' }}>50 Tracks</div>
+                            created ?
+                                <a href={this.state.currentPlaylist.uri} target="_blank" rel="noopener noreferrer">
+                                    <div className="card" style={{ background: 'rgb(24, 24, 24)', borderColor: '#464646', borderWidth: '2px' }}>
+                                        <div>
+                                            <div style={{ float: 'left', borderRadius: '4px' }}>
+                                                <img src={this.state.currentPlaylist.image} style={{ borderRadius: '26px', borderColor: '#464646', borderWidth: '7px', width: '64px', height: '64px' }} alt="cover" />
+                                            </div>
+                                            <div style={{ float: 'left', paddingLeft: '6px', paddingRight: '10px', paddingTop: '10px', paddingBottom: '10px', maxWidth: '70%', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }} >
+                                                <div style={{ fontSize: '14px', fontWeight: '500', color: 'white', margin: 'auto', boxSizing: 'border-box' }}>{this.state.currentPlaylist.name}</div>
+                                                <div style={{ fontSize: '12px', fontWeight: '500', color: 'grey', margin: 'auto', boxSizing: 'border-box' }}>50 Tracks</div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </a>
-                            :
-                            <div></div>
-                    }
+                                </a>
+                                :
+                                <div></div>
+                        }
+                    </div>
                 </div>
             </div>
         );

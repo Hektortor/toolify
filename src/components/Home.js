@@ -6,7 +6,7 @@ class Home extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="App container">
 
         <h1 style={{ fontFamily: 'Gotham Bold', marginTop: '40px' }}>Home</h1>
 
@@ -38,7 +38,7 @@ class Home extends Component {
           </div>
         </NavLink>
 
-      </div >
+      </div>
     );
   }
 }
