@@ -466,7 +466,7 @@ class Releases extends Component {
                                                 <img style={{ width: 30, height: 30, marginTop: '17px', marginBottom: '17px', cursor: 'pointer' }} alt="cover" src={check} onClick={() => this.addAlbumToLibrary(item.id, item.name)} />
                                             </div>
 
-                                            <div id="obenLinks" style={{ float: 'left', height: '64px' }}>
+                                            <div id="obenLinks" style={{ float: 'left', height: '64px', width: '85%' }}>
                                                 <a href={item.url} target="_blank" rel="noopener noreferrer">
                                                     <img src={item.imageSmall} style={{ marginRight: '4px', float: 'left', borderRadius: '26px', borderColor: '#464646', borderWidth: '7px', width: '64px', height: '64px' }} alt="cover" />
                                                 </a>
