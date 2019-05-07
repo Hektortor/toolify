@@ -22,7 +22,9 @@ class Releases extends Component {
             lastReleaseId: "",
             typeSelection: 1,
             loading: false,
-            error: false
+            error: false,
+            snackbarText: "",
+            snackbarVisible: false
         };
         if (params.access_token) {
             spotifyWebApi.setAccessToken(params.access_token);
@@ -369,6 +371,7 @@ class Releases extends Component {
 
         spotifyWebApi.addToMySavedAlbums(ids).then((response) => {
             console.log(name + " successfully saved to library");
+            this.showSnackbar(name + " saved to library!");
         });
     }
 
@@ -397,6 +400,22 @@ class Releases extends Component {
         }
     }
 
+    showSnackbar(text) {
+        var context = this;
+
+        this.setState({
+            snackbarText: text,
+            snackbarVisible: true
+        });
+
+        setTimeout(function () {
+            context.setState({
+                snackbarText: "",
+                snackbarVisible: false
+            });
+        }, 3000);
+    }
+
     // albumIsAlreadySaved(id) {
     //     var ids = [];
     //     ids.push(id);
@@ -410,6 +429,8 @@ class Releases extends Component {
         var loading = this.state.loading;
         var type = this.state.typeSelection;
         var error = this.state.error;
+        var snackbarText = this.state.snackbarText;
+        var snackbarVisible = this.state.snackbarVisible;
         return (
             <div className="App">
                 <div className="container">
@@ -486,6 +507,13 @@ class Releases extends Component {
                             })
                         }
                     </ListGroup>
+                    {
+                        snackbarVisible
+                            ?
+                            <div className="snackbar">{this.state.snackbarText}</div>
+                            :
+                            <div></div>
+                    }
                 </div>
             </div>
         );

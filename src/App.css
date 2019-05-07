@@ -177,6 +177,10 @@
   font-size: 14px;
 }
 
+.navbar-dark .navbar-toggler-icon {
+  background-image: url('./img/menu.png');
+}
+
 .formLayout {
   text-align: center;
   padding: 5px;
@@ -267,4 +271,71 @@
   transition: 0.3s;
   -webkit-transition: 0.3s;
   -moz-transition: 0.3s;
+}
+
+/* The snackbar - position it at the bottom and in the middle of the screen */
+.snackbar {
+  min-width: 250px;
+  background-color: #fff;
+  color: #000;
+  text-align: center;
+  border-radius: 20px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  bottom: 20px;
+  margin-right: 16px;
+  font-family: 'Gotham Bold';
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+
+  to {
+    bottom: 20px;
+    opacity: 1;
+  }
+}
+
+@keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+
+  to {
+    bottom: 20px;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeout {
+  from {
+    bottom: 20px;
+    opacity: 1;
+  }
+
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    bottom: 20px;
+    opacity: 1;
+  }
+
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
 }
