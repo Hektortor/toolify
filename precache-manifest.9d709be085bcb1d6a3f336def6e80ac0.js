@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "03eee7f8cb2f9889e1bc900d779d236e",
+    "revision": "cc7aae4ce0edefcddaa03f47f0c3ef9b",
     "url": "/toolify/index.html"
   },
   {
-    "revision": "f47dae29fe61ca6700e7",
-    "url": "/toolify/static/css/main.bdbe73ec.chunk.css"
+    "revision": "9e9248b2b5848bf36895",
+    "url": "/toolify/static/css/main.151a939c.chunk.css"
   },
   {
-    "revision": "02ca3b38a1a8c6b6c3f0",
-    "url": "/toolify/static/js/2.ca1e33f7.chunk.js"
+    "revision": "e84d3949603d97e55f5f",
+    "url": "/toolify/static/js/2.c5ac29c2.chunk.js"
   },
   {
-    "revision": "f47dae29fe61ca6700e7",
-    "url": "/toolify/static/js/main.bc611a6a.chunk.js"
+    "revision": "9e9248b2b5848bf36895",
+    "url": "/toolify/static/js/main.ba83ab30.chunk.js"
   },
   {
     "revision": "15c5a12bab813acd0a4c",
@@ -90,5 +90,9 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "ba7ee4ffcdcd65f753a35cd804ac1514",
     "url": "/toolify/static/media/GothamMedium_1.ba7ee4ff.woff"
+  },
+  {
+    "revision": "51ada26e3dd92acb351f701958420039",
+    "url": "/toolify/static/media/author.51ada26e.jpg"
   }
 ]);

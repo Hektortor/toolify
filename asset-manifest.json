@@ -1,16 +1,17 @@
 {
   "files": {
-    "main.css": "/toolify/static/css/main.bdbe73ec.chunk.css",
-    "main.js": "/toolify/static/js/main.bc611a6a.chunk.js",
-    "main.js.map": "/toolify/static/js/main.bc611a6a.chunk.js.map",
+    "main.css": "/toolify/static/css/main.151a939c.chunk.css",
+    "main.js": "/toolify/static/js/main.ba83ab30.chunk.js",
+    "main.js.map": "/toolify/static/js/main.ba83ab30.chunk.js.map",
     "runtime~main.js": "/toolify/static/js/runtime~main.c3e6625e.js",
     "runtime~main.js.map": "/toolify/static/js/runtime~main.c3e6625e.js.map",
-    "static/js/2.ca1e33f7.chunk.js": "/toolify/static/js/2.ca1e33f7.chunk.js",
-    "static/js/2.ca1e33f7.chunk.js.map": "/toolify/static/js/2.ca1e33f7.chunk.js.map",
+    "static/js/2.c5ac29c2.chunk.js": "/toolify/static/js/2.c5ac29c2.chunk.js",
+    "static/js/2.c5ac29c2.chunk.js.map": "/toolify/static/js/2.c5ac29c2.chunk.js.map",
     "index.html": "/toolify/index.html",
-    "precache-manifest.30b6fb34c4a7378bb7a78a8c96bc95d0.js": "/toolify/precache-manifest.30b6fb34c4a7378bb7a78a8c96bc95d0.js",
+    "precache-manifest.9d709be085bcb1d6a3f336def6e80ac0.js": "/toolify/precache-manifest.9d709be085bcb1d6a3f336def6e80ac0.js",
     "service-worker.js": "/toolify/service-worker.js",
-    "static/css/main.bdbe73ec.chunk.css.map": "/toolify/static/css/main.bdbe73ec.chunk.css.map",
-    "static/media/App.css": "/toolify/static/media/GothamMedium_1.ba7ee4ff.woff"
+    "static/css/main.151a939c.chunk.css.map": "/toolify/static/css/main.151a939c.chunk.css.map",
+    "static/media/App.css": "/toolify/static/media/GothamMedium_1.ba7ee4ff.woff",
+    "static/media/author.jpg": "/toolify/static/media/author.51ada26e.jpg"
   }
 }
