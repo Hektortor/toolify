@@ -117,7 +117,7 @@ class App extends Component {
           <Navbar collapseOnSelect expand="lg" variant="dark" sticky="top" style={{ background: 'black' }}>
             <NavLink to="/"><Navbar.Brand style={{ fontFamily: "Gotham Bold" }}>Toolify</Navbar.Brand></NavLink>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-            <Navbar.Collapse id="responsive-navbar-nav" style={{ textAlign: 'center' }}>
+            <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="mr-auto">
                 <NavLink className="link" exact to="/">Home</NavLink>
                 <NavLink className="link" exact to="/releases">Releases</NavLink>
@@ -158,7 +158,7 @@ class App extends Component {
               </Nav>
             </Navbar.Collapse>
           </Navbar>
-          <div style={{ height: '100vh' }}>
+          <div style={{ height: 'calc(100vh - 86px)' }}>
             {
               loggedIn
                 ?
