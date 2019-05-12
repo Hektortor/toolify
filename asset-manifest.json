@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/toolify/static/css/main.98bbf975.chunk.css",
-    "main.js": "/toolify/static/js/main.d0287648.chunk.js",
-    "main.js.map": "/toolify/static/js/main.d0287648.chunk.js.map",
+    "main.css": "/toolify/static/css/main.f82895b2.chunk.css",
+    "main.js": "/toolify/static/js/main.491eb06b.chunk.js",
+    "main.js.map": "/toolify/static/js/main.491eb06b.chunk.js.map",
     "runtime~main.js": "/toolify/static/js/runtime~main.c3e6625e.js",
     "runtime~main.js.map": "/toolify/static/js/runtime~main.c3e6625e.js.map",
     "static/js/2.c5ac29c2.chunk.js": "/toolify/static/js/2.c5ac29c2.chunk.js",
     "static/js/2.c5ac29c2.chunk.js.map": "/toolify/static/js/2.c5ac29c2.chunk.js.map",
     "index.html": "/toolify/index.html",
-    "precache-manifest.aa6182e0c3096ba270c7ebc79b680816.js": "/toolify/precache-manifest.aa6182e0c3096ba270c7ebc79b680816.js",
+    "precache-manifest.b85f4c2708180c0c16dec87954dd8b77.js": "/toolify/precache-manifest.b85f4c2708180c0c16dec87954dd8b77.js",
     "service-worker.js": "/toolify/service-worker.js",
-    "static/css/main.98bbf975.chunk.css.map": "/toolify/static/css/main.98bbf975.chunk.css.map",
+    "static/css/main.f82895b2.chunk.css.map": "/toolify/static/css/main.f82895b2.chunk.css.map",
     "static/media/App.css": "/toolify/static/media/GothamMedium_1.ba7ee4ff.woff",
     "static/media/author.jpg": "/toolify/static/media/author.51ada26e.jpg"
   }
