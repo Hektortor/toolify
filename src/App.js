@@ -17,7 +17,7 @@ import Releases from "./components/Releases";
 import Feelings from "./components/Feelings";
 import Tops from "./components/Tops";
 import Statistics from "./components/Statistics";
-import Analyzer from "./components/Analyzer";
+// import Analyzer from "./components/Analyzer";
 import About from "./components/About";
 import NotFound from "./components/NotFound";
 
@@ -124,7 +124,7 @@ class App extends Component {
                 <NavLink className="link" exact to="/feelings">Feelings</NavLink>
                 <NavLink className="link" exact to="/tops">Tops</NavLink>
                 <NavLink className="link" exact to="/statistics">Statistics</NavLink>
-                <NavLink className="link" exact to="/analyzer">Analyzer</NavLink>
+                {/* <NavLink className="link" exact to="/analyzer">Analyzer</NavLink> */}
                 <NavLink className="link" exact to="/about">About</NavLink>
                 {/* {
                   loggedIn
@@ -168,7 +168,7 @@ class App extends Component {
                   <Route path="/feelings" component={Feelings} />
                   <Route path="/tops" component={Tops} />
                   <Route path="/statistics" component={Statistics} />
-                  <Route path="/analyzer" component={Analyzer} />
+                  {/* <Route path="/analyzer" component={Analyzer} /> */}
                   <Route path="/about" component={About} />
                   <Route component={NotFound} />
                 </Switch>
