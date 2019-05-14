@@ -1,3 +1,4 @@
+/* eslint-disable no-cond-assign */
 import React, { Component } from 'react';
 import { BrowserRouter, NavLink, Route, Switch } from 'react-router-dom';
 import './App.css';
