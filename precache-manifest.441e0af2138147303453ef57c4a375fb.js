@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "afa3e3a4dbd0f2548f84bbc06e234067",
+    "revision": "f453e0453d243c082bfbc9b36ae66625",
     "url": "/toolify/index.html"
   },
   {
-    "revision": "3c0afb249af8957c8860",
+    "revision": "9af827adb8c7803b04cb",
     "url": "/toolify/static/css/main.f82895b2.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/toolify/static/js/2.b7d981c1.chunk.js"
   },
   {
-    "revision": "3c0afb249af8957c8860",
-    "url": "/toolify/static/js/main.21d4e09b.chunk.js"
+    "revision": "9af827adb8c7803b04cb",
+    "url": "/toolify/static/js/main.5d199f28.chunk.js"
   },
   {
     "revision": "15c5a12bab813acd0a4c",

@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/toolify/static/css/main.f82895b2.chunk.css",
-    "main.js": "/toolify/static/js/main.21d4e09b.chunk.js",
-    "main.js.map": "/toolify/static/js/main.21d4e09b.chunk.js.map",
+    "main.js": "/toolify/static/js/main.5d199f28.chunk.js",
+    "main.js.map": "/toolify/static/js/main.5d199f28.chunk.js.map",
     "runtime~main.js": "/toolify/static/js/runtime~main.c3e6625e.js",
     "runtime~main.js.map": "/toolify/static/js/runtime~main.c3e6625e.js.map",
     "static/js/2.b7d981c1.chunk.js": "/toolify/static/js/2.b7d981c1.chunk.js",
     "static/js/2.b7d981c1.chunk.js.map": "/toolify/static/js/2.b7d981c1.chunk.js.map",
     "index.html": "/toolify/index.html",
-    "precache-manifest.a36a190fd9b264906a5f812a78e04c8d.js": "/toolify/precache-manifest.a36a190fd9b264906a5f812a78e04c8d.js",
+    "precache-manifest.441e0af2138147303453ef57c4a375fb.js": "/toolify/precache-manifest.441e0af2138147303453ef57c4a375fb.js",
     "service-worker.js": "/toolify/service-worker.js",
     "static/css/main.f82895b2.chunk.css.map": "/toolify/static/css/main.f82895b2.chunk.css.map",
     "static/media/App.css": "/toolify/static/media/GothamMedium_1.ba7ee4ff.woff",
