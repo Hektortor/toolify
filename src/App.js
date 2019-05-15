@@ -175,7 +175,7 @@ class App extends Component {
                 </Switch>
                 :
                 <div>
-                  <h2 style={{ fontFamily: 'Gotham Bold', margin: '30px' }}>Welcome to Toolify</h2>
+                  <h2 className="title">Welcome to Toolify</h2>
                   <div style={{ borderRadius: '32px', background: 'rgb(24, 24, 24)', width: '96px', height: '96px', margin: 'auto', textAlign: 'center' }}>
                     <img src={welcome} alt="welcome" />
                   </div>

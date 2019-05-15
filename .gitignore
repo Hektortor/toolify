@@ -15,7 +15,7 @@
 /src/client.js
 
 # components....only until release
-/src/components
+/src/old
 
 # misc
 .DS_Store

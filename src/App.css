@@ -1,34 +1,9 @@
 @font-face {
-  font-family: 'Gotham Book';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Gotham Book'), url('./fonts/GothamBook.woff') format('woff');
-}
-
-
-@font-face {
-  font-family: 'Gotham Book Italic';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Gotham Book Italic'), url('./fonts/GothamBookItalic.woff') format('woff');
-}
-
-
-@font-face {
   font-family: 'Gotham Light';
   font-style: normal;
   font-weight: normal;
   src: local('Gotham Light'), url('./fonts/GothamLight.woff') format('woff');
 }
-
-
-@font-face {
-  font-family: 'Gotham Light Italic';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Gotham Light Italic'), url('./fonts/GothamLightItalic.woff') format('woff');
-}
-
 
 @font-face {
   font-family: 'Gotham Medium';
@@ -37,108 +12,11 @@
   src: local('Gotham Medium'), url('./fonts/GothamMedium.woff') format('woff');
 }
 
-
-@font-face {
-  font-family: 'Gotham Medium_1';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Gotham Medium'), url('./fonts/GothamMedium_1.woff') format('woff');
-}
-
-
-@font-face {
-  font-family: 'Gotham Medium';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Gotham Medium'), url('./fonts/GothamMediumItalic.woff') format('woff');
-}
-
-
 @font-face {
   font-family: 'Gotham Bold';
   font-style: normal;
   font-weight: normal;
   src: local('Gotham Bold'), url('./fonts/GothamBold.woff') format('woff');
-}
-
-
-@font-face {
-  font-family: 'Gotham Bold';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Gotham Bold'), url('./fonts/Gotham-Bold.woff') format('woff');
-}
-
-
-@font-face {
-  font-family: 'Gotham Bold Italic';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Gotham Bold Italic'), url('./fonts/GothamBoldItalic.woff') format('woff');
-}
-
-
-@font-face {
-  font-family: 'Gotham Black Regular';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Gotham Black Regular'), url('./fonts/Gotham-Black.woff') format('woff');
-}
-
-
-@font-face {
-  font-family: 'Gotham Light Regular';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Gotham Light Regular'), url('./fonts/Gotham-Light.woff') format('woff');
-}
-
-
-@font-face {
-  font-family: 'Gotham Thin Regular';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Gotham Thin Regular'), url('./fonts/Gotham-Thin.woff') format('woff');
-}
-
-
-@font-face {
-  font-family: 'Gotham XLight Regular';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Gotham XLight Regular'), url('./fonts/Gotham-XLight.woff') format('woff');
-}
-
-
-@font-face {
-  font-family: 'Gotham Book Italic';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Gotham Book Italic'), url('./fonts/Gotham-BookItalic.woff') format('woff');
-}
-
-
-@font-face {
-  font-family: 'Gotham Thin Italic';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Gotham Thin Italic'), url('./fonts/Gotham-ThinItalic.woff') format('woff');
-}
-
-
-@font-face {
-  font-family: 'Gotham Ultra Italic';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Gotham Ultra Italic'), url('./fonts/Gotham-UltraItalic.woff') format('woff');
-}
-
-
-@font-face {
-  font-family: 'Gotham XLight Italic';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Gotham XLight Italic'), url('./fonts/Gotham-XLightItalic.woff') format('woff');
 }
 
 .App {
@@ -280,7 +158,6 @@
   -moz-transition: 0.3s;
 }
 
-/* The snackbar - position it at the bottom and in the middle of the screen */
 .snackbar {
   min-width: 250px;
   background-color: #fff;
@@ -298,7 +175,6 @@
   animation: fadein 0.5s, fadeout 0.5s 2.5s;
 }
 
-/* Animations to fade the snackbar in and out */
 @-webkit-keyframes fadein {
   from {
     bottom: 0;
