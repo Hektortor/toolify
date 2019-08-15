@@ -150,9 +150,17 @@ class Releases extends Component {
 
     forEachPromise(list, newList, options, lastId, context, func) {
         return list.reduce(function (promise, list) {
-            return promise.then(function () {
-                return func(list, newList, options, lastId, context);
-            });
+            return promise
+                .then(function () {
+                    return func(list, newList, options, lastId, context);
+                })
+                .catch((err) => {
+                    context.setState({
+                        loading: false,
+                        error: true,
+                        errorText: err
+                    });
+                });
         }, Promise.resolve());
     }
 
@@ -247,7 +255,7 @@ class Releases extends Component {
             case 3:
                 options = { include_groups: "album,single,compilation", limit: 1 };
                 break;
-                
+
             default:
                 options = { limit: 1 };
                 break;
@@ -260,7 +268,14 @@ class Releases extends Component {
                 releases: newReleases,
                 loading: false
             });
-        });
+        })
+            .catch((err) => {
+                context.setState({
+                    loading: false,
+                    error: true,
+                    errorText: err
+                });
+            });
     }
 
     addArtists(list, newArtists, options, lastArtistId, context) {
@@ -325,6 +340,13 @@ class Releases extends Component {
                             artists: newArtists
                         });
                         this.getLatestReleases();
+                    })
+                    .catch((err) => {
+                        context.setState({
+                            loading: false,
+                            error: true,
+                            errorText: err
+                        });
                     });
             })
             .catch((err) => {
