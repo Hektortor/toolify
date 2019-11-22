@@ -1,17 +1,23 @@
 {
   "files": {
-    "main.css": "/toolify/static/css/main.8801dc6d.chunk.css",
-    "main.js": "/toolify/static/js/main.b91d4ece.chunk.js",
-    "main.js.map": "/toolify/static/js/main.b91d4ece.chunk.js.map",
-    "runtime~main.js": "/toolify/static/js/runtime~main.cded1d1a.js",
-    "runtime~main.js.map": "/toolify/static/js/runtime~main.cded1d1a.js.map",
-    "static/js/2.cc30d9a9.chunk.js": "/toolify/static/js/2.cc30d9a9.chunk.js",
-    "static/js/2.cc30d9a9.chunk.js.map": "/toolify/static/js/2.cc30d9a9.chunk.js.map",
+    "main.css": "/toolify/static/css/main.9389f15b.chunk.css",
+    "main.js": "/toolify/static/js/main.fa28d739.chunk.js",
+    "main.js.map": "/toolify/static/js/main.fa28d739.chunk.js.map",
+    "runtime-main.js": "/toolify/static/js/runtime-main.28683d9b.js",
+    "runtime-main.js.map": "/toolify/static/js/runtime-main.28683d9b.js.map",
+    "static/js/2.4ed7bae3.chunk.js": "/toolify/static/js/2.4ed7bae3.chunk.js",
+    "static/js/2.4ed7bae3.chunk.js.map": "/toolify/static/js/2.4ed7bae3.chunk.js.map",
     "index.html": "/toolify/index.html",
-    "precache-manifest.4b91afb12bc6a30bdff3894589a5c075.js": "/toolify/precache-manifest.4b91afb12bc6a30bdff3894589a5c075.js",
+    "precache-manifest.ebcdff13f6ec00cb742180299781a5dd.js": "/toolify/precache-manifest.ebcdff13f6ec00cb742180299781a5dd.js",
     "service-worker.js": "/toolify/service-worker.js",
-    "static/css/main.8801dc6d.chunk.css.map": "/toolify/static/css/main.8801dc6d.chunk.css.map",
+    "static/css/main.9389f15b.chunk.css.map": "/toolify/static/css/main.9389f15b.chunk.css.map",
     "static/media/App.css": "/toolify/static/media/GothamMedium.ba7ee4ff.woff",
     "static/media/author.jpg": "/toolify/static/media/author.51ada26e.jpg"
-  }
+  },
+  "entrypoints": [
+    "static/js/runtime-main.28683d9b.js",
+    "static/js/2.4ed7bae3.chunk.js",
+    "static/css/main.9389f15b.chunk.css",
+    "static/js/main.fa28d739.chunk.js"
+  ]
 }
