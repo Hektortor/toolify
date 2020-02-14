@@ -1,17 +1,24 @@
 {
   "files": {
-    "main.css": "/toolify/static/css/main.9389f15b.chunk.css",
-    "main.js": "/toolify/static/js/main.dcc04ad1.chunk.js",
-    "main.js.map": "/toolify/static/js/main.dcc04ad1.chunk.js.map",
-    "runtime~main.js": "/toolify/static/js/runtime~main.cded1d1a.js",
-    "runtime~main.js.map": "/toolify/static/js/runtime~main.cded1d1a.js.map",
-    "static/js/2.cc30d9a9.chunk.js": "/toolify/static/js/2.cc30d9a9.chunk.js",
-    "static/js/2.cc30d9a9.chunk.js.map": "/toolify/static/js/2.cc30d9a9.chunk.js.map",
+    "main.css": "/toolify/static/css/main.798c6fb4.chunk.css",
+    "main.js": "/toolify/static/js/main.bcac354c.chunk.js",
+    "main.js.map": "/toolify/static/js/main.bcac354c.chunk.js.map",
+    "runtime-main.js": "/toolify/static/js/runtime-main.671481c5.js",
+    "runtime-main.js.map": "/toolify/static/js/runtime-main.671481c5.js.map",
+    "static/js/2.0e0f9233.chunk.js": "/toolify/static/js/2.0e0f9233.chunk.js",
+    "static/js/2.0e0f9233.chunk.js.map": "/toolify/static/js/2.0e0f9233.chunk.js.map",
     "index.html": "/toolify/index.html",
-    "precache-manifest.101686c39f30da11a374fd4afa2904ac.js": "/toolify/precache-manifest.101686c39f30da11a374fd4afa2904ac.js",
+    "precache-manifest.d8320b912446f21185363cf23b74bf0a.js": "/toolify/precache-manifest.d8320b912446f21185363cf23b74bf0a.js",
     "service-worker.js": "/toolify/service-worker.js",
-    "static/css/main.9389f15b.chunk.css.map": "/toolify/static/css/main.9389f15b.chunk.css.map",
+    "static/css/main.798c6fb4.chunk.css.map": "/toolify/static/css/main.798c6fb4.chunk.css.map",
+    "static/js/2.0e0f9233.chunk.js.LICENSE.txt": "/toolify/static/js/2.0e0f9233.chunk.js.LICENSE.txt",
     "static/media/App.css": "/toolify/static/media/GothamMedium.ba7ee4ff.woff",
     "static/media/author.jpg": "/toolify/static/media/author.51ada26e.jpg"
-  }
+  },
+  "entrypoints": [
+    "static/js/runtime-main.671481c5.js",
+    "static/js/2.0e0f9233.chunk.js",
+    "static/css/main.798c6fb4.chunk.css",
+    "static/js/main.bcac354c.chunk.js"
+  ]
 }
